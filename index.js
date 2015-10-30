@@ -3,7 +3,8 @@
 var map = require('map-stream');
 var fs = require('vinyl-fs');
 var argv = require('yargs')
-    .usage("Usage: $0 --json '~/.bonita/widgets/**/*.json' --grab properties [--display item.name] [--filter item.bidirectional==true]")
+    .usage("Usage: $0 --json <path> --grab <property name> [--identifier <property name> --display <expression> --filter <expression>]")
+    .example("$0 --json '~/.bonita/widgets/**/*.json' --grab properties --identifier id --display item.name --filter item.bidirectional==true")
 
     .demand('json')
     .alias('json', 'j')

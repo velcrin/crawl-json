@@ -3,10 +3,10 @@
 var map = require('map-stream');
 var fs = require('vinyl-fs');
 var argv = require('yargs')
-    .usage("Usage: $0 --workspace ~/.bonita/widgets --grab properties [--display item.name] [--filter item.bidirectional==true]")
+    .usage("Usage: $0 --json '~/.bonita/widgets/**/*.json' --grab properties [--display item.name] [--filter item.bidirectional==true]")
 
-    .demand('workspace')
-    .alias('workspace', 'w')
+    .demand('json')
+    .alias('json', 'j')
 
     .demand('grab')
     .alias('grab', 'g')
@@ -31,7 +31,7 @@ function typeOf(any) {
     return Object.prototype.toString.call(any);
 }
 
-fs.src(argv.workspace + '/**/*.json')
+fs.src(argv.target)
     .pipe(map(function (file, callback) {
         var artifact = JSON.parse(file.contents);
         console.log(

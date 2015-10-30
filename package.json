@@ -1,0 +1,16 @@
+{
+  "name": "crawl-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "map-stream": "0.0.6",
+    "vinyl-fs": "^2.2.1",
+    "yargs": "^3.29.0"
+  }
+}

@@ -11,6 +11,10 @@ var argv = require('yargs')
     .demand('grab')
     .alias('grab', 'g')
 
+    .demand('identifier', false)
+    .default('identifier', 'name')
+    .alias('identifier', 'id')
+
     .demand('display', false)
     .default('display', 'item')
 
@@ -31,11 +35,11 @@ function typeOf(any) {
     return Object.prototype.toString.call(any);
 }
 
-fs.src(argv.target)
+fs.src(argv.json)
     .pipe(map(function (file, callback) {
         var artifact = JSON.parse(file.contents);
         console.log(
-            artifact.name, '=>',
+            artifact[argv.identifier], '=>',
             (displays[typeOf(artifact[argv.grab])] || ((any) => any))(artifact[argv.grab]));
         callback(null, file);
     }));
